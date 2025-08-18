@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: #f4f4f4;
+    }
+    .container {
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 350px;
+    }
+    h2 { text-align: center; margin-bottom: 15px; }
+    input, textarea, button {
+      width: 100%; padding: 10px; margin: 8px 0;
+      border: 1px solid #ccc; border-radius: 5px;
+    }
+    button {
+      background: #007BFF; color: #fff; border: none; cursor: pointer;
+    }
+    button:hover { background: #0056b3; }
+    .error { color: red; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Contact Us</h2>
+    <form id="contactForm">
+      <input type="text" id="name" placeholder="Enter Name">
+      <p id="nameError" class="error"></p>
+      
+      <input type="email" id="email" placeholder="Enter Email">
+      <p id="emailError" class="error"></p>
+      
+      <textarea id="message" placeholder="Enter Message"></textarea>
+      <p id="messageError" class="error"></p>
+      
+      <button type="submit">Send</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById("contactForm").addEventListener("submit", function(e){
+      e.preventDefault();
+      let valid = true;
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      document.getElementById("nameError").innerText = "";
+      document.getElementById("emailError").innerText = "";
+      document.getElementById("messageError").innerText = "";
+
+      if(name === "") {
+        document.getElementById("nameError").innerText = "Name is required.";
+        valid = false;
+      }
+      if(email === "" || !/\S+@\S+\.\S+/.test(email)) {
+        document.getElementById("emailError").innerText = "Valid email is required.";
+        valid = false;
+      }
+      if(message === "") {
+        document.getElementById("messageError").innerText = "Message cannot be empty.";
+        valid = false;
+      }
+
+      if(valid) {
+        alert("Form submitted successfully!");
+      }
+    });
+  </script>
+</body>
+</html>

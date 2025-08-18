@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Layout</title>
+  <style>
+    * { margin:0; padding:0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; }
+
+    header, footer {
+      background: #007BFF; color: white; text-align: center; padding: 15px;
+    }
+    nav {
+      display: flex; justify-content: space-around;
+      background: #333; color: white; padding: 10px;
+    }
+    nav a {
+      color: white; text-decoration: none;
+      padding: 5px 10px;
+    }
+    nav a:hover { background: #575757; border-radius: 5px; }
+
+    .container {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .content {
+      background: #f4f4f4; padding: 20px; border-radius: 8px;
+    }
+    .sidebar {
+      background: #e2e2e2; padding: 20px; border-radius: 8px;
+    }
+
+    @media(max-width: 768px) {
+      .container { grid-template-columns: 1fr; }
+      nav { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header><h1>My Website</h1></header>
+
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Projects</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <div class="container">
+    <div class="content">
+      <h2>Main Content</h2>
+      <p>This is the main content area. It adjusts with screen size using CSS Grid and media queries.</p>
+    </div>
+    <div class="sidebar">
+      <h3>Sidebar</h3>
+      <p>Additional links or info here.</p>
+    </div>
+  </div>
+
+  <footer><p>© 2025 My Website</p></footer>
+</body>
+</html>
