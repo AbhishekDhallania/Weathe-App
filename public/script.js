@@ -1,3 +1,5 @@
+const backendUrl = "https://weathe-app-8vc9.onrender.com"
+
 document.getElementById("getWeatherBtn").addEventListener("click", getWeather);
 
 async function getWeather() {
@@ -5,7 +7,7 @@ async function getWeather() {
   if (!city) return alert("Enter a city name");
 
   try {
-    const res = await fetch(`/api/weather?city=${city}`);
+    const res = await fetch(`${backendUrl}/api/weather?city=${city}`);
     if (!res.ok) return (document.getElementById("result").innerHTML = "<p>City not found!</p>");
     const data = await res.json();
 
